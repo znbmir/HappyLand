@@ -24,9 +24,9 @@ public class SpawnCube : MonoBehaviour {
 	void Start () {
 		radius = 5f;
 		moveSpeed = 1f;
-    startPoint = new Vector2(0, 0);
+    startPoint = new Vector2(0, 2);
     InvokeRepeating("SpawnCubeLeft", 0, 2);
-    InvokeRepeating("SpawnCubeRight", 0, 3);
+    InvokeRepeating("SpawnCubeRight", 1, 4);
 
 	}
 
