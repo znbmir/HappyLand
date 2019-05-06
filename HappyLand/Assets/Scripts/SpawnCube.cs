@@ -6,9 +6,6 @@ using UnityEngine;
 public class SpawnCube : MonoBehaviour {
 
 	[SerializeField]
-	int numberOfProjectiles = 1;
-
-	[SerializeField]
 	GameObject cubeLeft;
   [SerializeField]
   GameObject cubeRight;
@@ -17,10 +14,8 @@ public class SpawnCube : MonoBehaviour {
 	Vector2 startPoint;
 
 	float radius, moveSpeed;
-  float angleLeft = 200f;
-  float angleRight = 140f;
-  float angleStepLeft = 360f;
-  float angleStepRight = 360f;
+  float angleLeft = 210f;
+  float angleRight = 150f;
 
 
 
@@ -30,8 +25,8 @@ public class SpawnCube : MonoBehaviour {
 		radius = 5f;
 		moveSpeed = 1f;
     startPoint = new Vector2(0, 0);
-    InvokeRepeating("SpawnCubeLeft", 1, 1);
-    InvokeRepeating("SpawnCubeRight", 1.5f, 1);
+    InvokeRepeating("SpawnCubeLeft", 0, 2);
+    InvokeRepeating("SpawnCubeRight", 0, 3);
 
 	}
 
@@ -48,8 +43,6 @@ public class SpawnCube : MonoBehaviour {
 	void SpawnCubeLeft()
 	{
 
-		for (int i = 0; i <= numberOfProjectiles - 1; i++) {
-
 			float projectileDirXposition = startPoint.x + Mathf.Sin ((angleLeft * Mathf.PI) / 180) * radius;
 			float projectileDirYposition = startPoint.y + Mathf.Cos ((angleLeft * Mathf.PI) / 180) * radius;
 
@@ -59,14 +52,11 @@ public class SpawnCube : MonoBehaviour {
 			var proj = Instantiate (cubeLeft, startPoint, Quaternion.identity);
 			proj.GetComponent<Rigidbody2D> ().velocity =
 				new Vector2 (projectileMoveDirection.x, projectileMoveDirection.y);
-
-			angleLeft += angleStepLeft;
-		}
+			proj.transform.rotation = Quaternion.Euler(0,0,-1*angleLeft);
 	}
 
   void SpawnCubeRight()
   {
-    for (int i = 0; i <= numberOfProjectiles - 1; i++) {
 
       float projectileDirXposition = startPoint.x + Mathf.Sin ((angleRight * Mathf.PI) / 180) * radius;
       float projectileDirYposition = startPoint.y + Mathf.Cos ((angleRight * Mathf.PI) / 180) * radius;
@@ -77,9 +67,8 @@ public class SpawnCube : MonoBehaviour {
       var proj = Instantiate (cubeRight, startPoint, Quaternion.identity);
       proj.GetComponent<Rigidbody2D> ().velocity =
         new Vector2 (projectileMoveDirection.x, projectileMoveDirection.y);
+			proj.transform.rotation = Quaternion.Euler(0,0,-1*angleRight);
 
-      angleRight += angleStepRight;
-    }
-  }
+			}
 
 }

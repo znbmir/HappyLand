@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DestroyOnTouch : MonoBehaviour
 {
+
+  public bool passTochActivation = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +18,21 @@ public class DestroyOnTouch : MonoBehaviour
 
     }
 
+    void OnTriggerEnter2D(Collider2D target) {
+      if (target.tag == "TouchActivation") {
+        Debug.Log("touch activated");
+        passTochActivation = true;
+      }
+    }
+
     void OnMouseDown()
     {
       Debug.Log("Something touched");
-      Destroy(gameObject);
+      if(passTochActivation)
+      {
+        Destroy(gameObject);
+        ScoreCounter.score++;
+      }
+
     }
 }

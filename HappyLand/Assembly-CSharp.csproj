@@ -55,9 +55,10 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\DestroyOnTouch.cs" />
      <Compile Include="Assets\Scripts\ObstacleOffScreen.cs" />
+     <Compile Include="Assets\Scripts\ScoreCounter.cs" />
      <Compile Include="Assets\Scripts\SpawnCube.cs" />
-     <Compile Include="Assets\Scripts\SpawnCubeL.cs" />
      <Compile Include="Assets\Scripts\TouchCollection.cs" />
+     <None Include="Assets\Fonts\Atarian\Readme.txt" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>/Users/zeynabmir/Desktop/HappyLand/HappyLand/HappyLand/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
