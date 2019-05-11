@@ -17,7 +17,21 @@ public class SpawnCube : MonoBehaviour {
   float angleLeft = 210f;
   float angleRight = 150f;
 
+	public enum NoteType
+	{
+		None,
+		Touch,
+		DropDown,
+		DropUp,
+		TouchHold
+	};
 
+
+	public NoteType[] noteTypeLeft;
+	public NoteType[] noteTypeRight;
+
+	public int currentNoteIndex = 0;
+	public NoteType currentNote;
 
 
 	// Use this for initialization
@@ -25,8 +39,10 @@ public class SpawnCube : MonoBehaviour {
 		radius = 5f;
 		moveSpeed = 1f;
     startPoint = new Vector2(0, 2);
-    InvokeRepeating("SpawnCubeLeft", 0, 2);
-    InvokeRepeating("SpawnCubeRight", 1, 4);
+    InvokeRepeating("SpawnNoteLeft", 0, 2);
+    InvokeRepeating("SpawnNoteRight", 0, 2);
+
+		currentNote = noteTypeLeft[currentNoteIndex];
 
 	}
 
@@ -40,9 +56,11 @@ public class SpawnCube : MonoBehaviour {
 		//}
 	}
 
-	void SpawnCubeLeft()
+	void SpawnNoteLeft()
 	{
-
+		currentNote = noteTypeLeft[currentNoteIndex];
+		SwitchStatement(currentNote);
+		currentNoteIndex++;
 			float projectileDirXposition = startPoint.x + Mathf.Sin ((angleLeft * Mathf.PI) / 180) * radius;
 			float projectileDirYposition = startPoint.y + Mathf.Cos ((angleLeft * Mathf.PI) / 180) * radius;
 
@@ -55,8 +73,9 @@ public class SpawnCube : MonoBehaviour {
 			proj.transform.rotation = Quaternion.Euler(0,0,-1*angleLeft);
 	}
 
-  void SpawnCubeRight()
+  void SpawnNoteRight()
   {
+		currentNote = noteTypeLeft[currentNoteIndex];
 
       float projectileDirXposition = startPoint.x + Mathf.Sin ((angleRight * Mathf.PI) / 180) * radius;
       float projectileDirYposition = startPoint.y + Mathf.Cos ((angleRight * Mathf.PI) / 180) * radius;
@@ -71,4 +90,26 @@ public class SpawnCube : MonoBehaviour {
 
 			}
 
-}
+			void SwitchStatement(NoteType currentNote){
+				switch(currentNote){
+					case NoteType.None:
+					Debug.Log("None");
+					break;
+					case NoteType.Touch:
+					Debug.Log("Touch");
+					break;
+					case NoteType.DropUp:
+					Debug.Log("DropUp");
+					break;
+					case NoteType.DropDown:
+					Debug.Log("DropDown");
+					break;
+					case NoteType.TouchHold:
+					Debug.Log("TouchHold");
+					break;
+					default:
+					Debug.Log("Error");
+					break;
+				}
+			}
+		}
