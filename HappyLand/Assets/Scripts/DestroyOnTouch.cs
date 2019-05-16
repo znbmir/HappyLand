@@ -38,7 +38,7 @@ public class DestroyOnTouch : MonoBehaviour
       }
     }
 
-    void OnMouseDown()
+    public void OnMouseDown()
     {
       Debug.Log("Something touched");
       if(passTochActivation)

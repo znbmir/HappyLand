@@ -39,8 +39,8 @@ public class SpawnCube : MonoBehaviour {
 		radius = 5f;
 		moveSpeed = 1f;
     startPoint = new Vector2(0, 2);
-    InvokeRepeating("SpawnNoteLeft", 0, 2);
-    InvokeRepeating("SpawnNoteRight", 0, 2);
+    InvokeRepeating("SpawnCubeLeft", 0, 2);
+    InvokeRepeating("SpawnCubeRight", 0, 2);
 
 		currentNote = noteTypeLeft[currentNoteIndex];
 
@@ -56,10 +56,10 @@ public class SpawnCube : MonoBehaviour {
 		//}
 	}
 
-	void SpawnNoteLeft()
+	void SpawnCubeLeft()
 	{
 		currentNote = noteTypeLeft[currentNoteIndex];
-		SwitchStatement(currentNote);
+		//qSwitchStatement(currentNote);
 		currentNoteIndex++;
 			float projectileDirXposition = startPoint.x + Mathf.Sin ((angleLeft * Mathf.PI) / 180) * radius;
 			float projectileDirYposition = startPoint.y + Mathf.Cos ((angleLeft * Mathf.PI) / 180) * radius;
@@ -73,7 +73,7 @@ public class SpawnCube : MonoBehaviour {
 			proj.transform.rotation = Quaternion.Euler(0,0,-1*angleLeft);
 	}
 
-  void SpawnNoteRight()
+  void SpawnCubeRight()
   {
 		currentNote = noteTypeLeft[currentNoteIndex];
 
@@ -90,26 +90,5 @@ public class SpawnCube : MonoBehaviour {
 
 			}
 
-			void SwitchStatement(NoteType currentNote){
-				switch(currentNote){
-					case NoteType.None:
-					Debug.Log("None");
-					break;
-					case NoteType.Touch:
-					Debug.Log("Touch");
-					break;
-					case NoteType.DropUp:
-					Debug.Log("DropUp");
-					break;
-					case NoteType.DropDown:
-					Debug.Log("DropDown");
-					break;
-					case NoteType.TouchHold:
-					Debug.Log("TouchHold");
-					break;
-					default:
-					Debug.Log("Error");
-					break;
-				}
-			}
+			void SwitchStatement(){}
 		}
