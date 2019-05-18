@@ -43,7 +43,7 @@ public class DestroyOnTouch : MonoBehaviour
       Debug.Log("Something touched");
       if(passTochActivation)
       {
-        Destroy(gameObject);
+        //Destroy(gameObject);
         ScoreCounter.score++;
 
             explode();
