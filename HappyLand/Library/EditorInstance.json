@@ -1,6 +1,13 @@
 {
+<<<<<<< HEAD
 	"process_id" : 1098,
 	"version" : "2018.3.4f1",
 	"app_path" : "/Applications/Unity/Unity.app",
 	"app_contents_path" : "/Applications/Unity/Unity.app/Contents"
+=======
+	"process_id" : 1648,
+	"version" : "2018.3.5f1",
+	"app_path" : "/Volumes/softwares/Applications/Unity/Unity.app",
+	"app_contents_path" : "/Volumes/softwares/Applications/Unity/Unity.app/Contents"
+>>>>>>> master
 }
