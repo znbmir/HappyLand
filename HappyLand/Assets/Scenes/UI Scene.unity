@@ -464,8 +464,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113484642}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.100037, y: 201.80002, z: 0}
-  m_LocalScale: {x: 76.579926, y: 80.19528, z: 32.86692}
+  m_LocalPosition: {x: 12, y: 207, z: 0}
+  m_LocalScale: {x: 83, y: 83, z: 32.86692}
   m_Children: []
   m_Father: {fileID: 2074580970}
   m_RootOrder: 1
@@ -1046,8 +1046,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1008073921}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.00004, y: 207.00002, z: 0}
-  m_LocalScale: {x: 42.35058, y: 42.35058, z: 42.35058}
+  m_LocalPosition: {x: 12, y: 209, z: 0}
+  m_LocalScale: {x: 56, y: 56, z: 51.2442}
   m_Children: []
   m_Father: {fileID: 2074580970}
   m_RootOrder: 2
@@ -1110,7 +1110,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 36bc2a3acd5764dc98c5a05d70442353, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 05b41a3f6572a49bb9591feead5d62a8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1162,7 +1162,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 12, y: -13.659973}
+  m_AnchoredPosition: {x: 12, y: -13.659912}
   m_SizeDelta: {x: 52.6, y: 52.601}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1489945449
@@ -1177,15 +1177,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1415e433cc0c4b0ab88293e75bc931c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeLeft: {fileID: 1700285919, guid: 3835cf75efda0404a94f216a9d0ea853, type: 3}
-  cubeRight: {fileID: 495138874, guid: fffa9dae97aa44bc3b91f6736ea74c07, type: 3}
+  noteLeft: {fileID: 1700285919, guid: 3835cf75efda0404a94f216a9d0ea853, type: 3}
+  noteRight: {fileID: 495138874, guid: fffa9dae97aa44bc3b91f6736ea74c07, type: 3}
   spawnPoint: {fileID: 2020463891}
   yourCanvasVariable: {fileID: 2074580966}
   moveSpeed: 1
   noteTypeLeft: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   noteTypeRight: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   currentNoteIndex: 0
-  currentNote: 0
+  currentNoteLeft: 0
+  currentNoteRight: 0
 --- !u!114 &1489945450
 MonoBehaviour:
   m_ObjectHideFlags: 0
