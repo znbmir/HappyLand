@@ -24,6 +24,13 @@ public class SpawnNote : MonoBehaviour {
   float angleLeft = 210f;
   float angleRight = 150f;
 
+	public NoteType[] noteTypeLeft;
+	public NoteType[] noteTypeRight;
+
+	public int currentNoteIndex = 0;
+	public NoteType currentNoteLeft;
+	public NoteType currentNoteRight;
+
 	public enum NoteType
 	{
 		None,
@@ -32,16 +39,6 @@ public class SpawnNote : MonoBehaviour {
 		DropUp,
 		TouchHold
 	};
-
-
-	public NoteType[] noteTypeLeft;
-	public NoteType[] noteTypeRight;
-
-	public int currentNoteIndex = 0;
-	public NoteType currentNoteLeft;
-	public NoteType currentNoteRight;
-
-
 
 	// Use this for initialization
 	void Start () {
@@ -66,48 +63,63 @@ public class SpawnNote : MonoBehaviour {
 	void SpawnNoteLeft()
 	{
     currentNoteLeft = noteTypeLeft[currentNoteIndex];
-    SwitchStatement(currentNoteLeft);
     currentNoteIndex++;
 
-    float myButtonXPosition = spawnPoint.transform.position.x + Mathf.Sin ((angleLeft * Mathf.PI) / 180) * radius;
-    float myButtonYPosition = spawnPoint.transform.position.y + Mathf.Cos ((angleLeft * Mathf.PI) / 180) * radius;
-    Vector3 myButtonVector = new Vector3 (myButtonXPosition, myButtonYPosition, 0);
-    Vector3 myButtonMoveDirection = (myButtonVector - spawnPoint.transform.position).normalized * moveSpeed;
+		switch (currentNoteLeft)
+		{
+			case NoteType.None:
+		  print ("None NoteType^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+			break;
+			case NoteType.Touch:
+			{
+				float myButtonXPosition = spawnPoint.transform.position.x + Mathf.Sin ((angleLeft * Mathf.PI) / 180) * radius;
+				float myButtonYPosition = spawnPoint.transform.position.y + Mathf.Cos ((angleLeft * Mathf.PI) / 180) * radius;
+				Vector3 myButtonVector = new Vector3 (myButtonXPosition, myButtonYPosition, 0);
+				Vector3 myButtonMoveDirection = (myButtonVector - spawnPoint.transform.position).normalized * moveSpeed;
 
-    GameObject myButton = Instantiate (noteTouchLeft, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
-    myButton.transform.SetParent(yourCanvasVariable.transform);
-    myButton.GetComponent<Rigidbody2D> ().velocity = new Vector2 (myButtonMoveDirection.x, myButtonMoveDirection.y);
-    myButton.transform.rotation = Quaternion.Euler(0,0,-1*angleLeft);
+				GameObject myButton = Instantiate (noteTouchLeft, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
+				myButton.transform.SetParent(yourCanvasVariable.transform);
+				myButton.GetComponent<Rigidbody2D> ().velocity = new Vector2 (myButtonMoveDirection.x, myButtonMoveDirection.y);
+				myButton.transform.rotation = Quaternion.Euler(0,0,-1*angleLeft);
+			}
+			break;
+			default:
+			print ("Incorrect NoteType^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+			break;
+		}
+
+
 	}
+
+
+
 
   void SpawnNoteRight()
   {
     currentNoteRight = noteTypeRight[currentNoteIndex];
-    SwitchStatement(currentNoteRight);
 
-    float myButtonXPosition = spawnPoint.transform.position.x + Mathf.Sin ((angleRight * Mathf.PI) / 180) * radius;
-    float myButtonYPosition = spawnPoint.transform.position.y + Mathf.Cos ((angleRight * Mathf.PI) / 180) * radius;
-    Vector3 myButtonVector = new Vector3 (myButtonXPosition, myButtonYPosition, 0);
-    Vector3 myButtonMoveDirection = (myButtonVector - spawnPoint.transform.position).normalized * moveSpeed;
+		switch (currentNoteRight)
+		{
+			case NoteType.None:
+			print ("None NoteType^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+			break;
+			case NoteType.Touch:
+			{
+				float myButtonXPosition = spawnPoint.transform.position.x + Mathf.Sin ((angleRight * Mathf.PI) / 180) * radius;
+				float myButtonYPosition = spawnPoint.transform.position.y + Mathf.Cos ((angleRight * Mathf.PI) / 180) * radius;
+				Vector3 myButtonVector = new Vector3 (myButtonXPosition, myButtonYPosition, 0);
+				Vector3 myButtonMoveDirection = (myButtonVector - spawnPoint.transform.position).normalized * moveSpeed;
 
-    GameObject myButton = Instantiate (noteTouchRight, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
-    myButton.transform.SetParent(yourCanvasVariable.transform);
-    myButton.GetComponent<Rigidbody2D> ().velocity = new Vector2 (myButtonMoveDirection.x, myButtonMoveDirection.y);
-    myButton.transform.rotation = Quaternion.Euler(0,0,-1*angleRight);
-}
-
-			void SwitchStatement(NoteType currentNote){
-				switch (currentNote)
-        {
-        case NoteType.None:
-
-				break;
-        case NoteType.Touch:
-            print ("TouchNote******************************************");
-            break;
-        default:
-            print ("Incorrect NoteType^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-            break;
-        }
+				GameObject myButton = Instantiate (noteTouchRight, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
+				myButton.transform.SetParent(yourCanvasVariable.transform);
+				myButton.GetComponent<Rigidbody2D> ().velocity = new Vector2 (myButtonMoveDirection.x, myButtonMoveDirection.y);
+				myButton.transform.rotation = Quaternion.Euler(0,0,-1*angleRight);
 			}
+			break;
+			default:
+			print ("Incorrect NoteType^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+			break;
 		}
+	}
+
+}
