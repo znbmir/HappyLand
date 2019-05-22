@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CircleMove : MonoBehaviour {
 
-	private float RotateSpeed = 3f;
+	private float RotateSpeed = 10f;
 	private float angle;
 	public float direction;
 	public GameObject circle;

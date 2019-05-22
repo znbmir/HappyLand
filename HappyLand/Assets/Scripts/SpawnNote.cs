@@ -43,7 +43,7 @@ public class SpawnNote : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		radius = 5f;
-		moveSpeed = 70f;
+		moveSpeed = 200f;
     startPoint = new Vector2(0, 2);
     InvokeRepeating("SpawnNoteLeft", 0, 2);
     InvokeRepeating("SpawnNoteRight", 0, 2);
