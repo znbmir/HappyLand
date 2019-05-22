@@ -1,5 +1,4 @@
-
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,8 +18,11 @@ public class SpawnNote : MonoBehaviour {
 	Vector2 startPoint;
 
 	float radius;
+	public float beatTempo;
+  private float moveSpeed;
 
-  public float moveSpeed;
+	public bool hasStarted;
+
   float angleLeft = 210f;
   float angleRight = 150f;
 
@@ -30,6 +32,7 @@ public class SpawnNote : MonoBehaviour {
 	public int currentNoteIndex = 0;
 	public NoteType currentNoteLeft;
 	public NoteType currentNoteRight;
+
 
 	public enum NoteType
 	{
@@ -43,10 +46,12 @@ public class SpawnNote : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		radius = 5f;
-		moveSpeed = 200f;
+		//moveSpeed = 200f;
     startPoint = new Vector2(0, 2);
     InvokeRepeating("SpawnNoteLeft", 0, 2);
     InvokeRepeating("SpawnNoteRight", 0, 2);
+
+		moveSpeed = beatTempo / 60f;
 
 	}
 
@@ -62,6 +67,8 @@ public class SpawnNote : MonoBehaviour {
 
 	void SpawnNoteLeft()
 	{
+		if(hasStarted){
+
     currentNoteLeft = noteTypeLeft[currentNoteIndex];
     currentNoteIndex++;
 
@@ -87,6 +94,7 @@ public class SpawnNote : MonoBehaviour {
 			print ("Incorrect NoteType^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 			break;
 		}
+	}
 
 
 	}
@@ -96,6 +104,8 @@ public class SpawnNote : MonoBehaviour {
 
   void SpawnNoteRight()
   {
+		if(hasStarted){
+
     currentNoteRight = noteTypeRight[currentNoteIndex];
 
 		switch (currentNoteRight)
@@ -121,5 +131,6 @@ public class SpawnNote : MonoBehaviour {
 			break;
 		}
 	}
+}
 
 }

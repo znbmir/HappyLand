@@ -280,6 +280,7 @@
 "Assets/Scripts/CircleMove.cs"
 "Assets/Scripts/DestroyOnTouch.cs"
 "Assets/Scripts/DistanceDestroyOnTouch.cs"
+"Assets/Scripts/GameManager.cs"
 "Assets/Scripts/ObstacleOffScreen.cs"
 "Assets/Scripts/ScoreCounter.cs"
 "Assets/Scripts/SpawnCube.cs"

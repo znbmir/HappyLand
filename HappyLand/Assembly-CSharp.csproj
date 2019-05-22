@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scripts\CircleMove.cs" />
      <Compile Include="Assets\Scripts\DestroyOnTouch.cs" />
      <Compile Include="Assets\Scripts\DistanceDestroyOnTouch.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\ObstacleOffScreen.cs" />
      <Compile Include="Assets\Scripts\ScoreCounter.cs" />
      <Compile Include="Assets\Scripts\SpawnCube.cs" />
