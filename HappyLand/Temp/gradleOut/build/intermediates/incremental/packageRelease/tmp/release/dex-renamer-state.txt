@@ -1,4 +1,0 @@
-#Wed May 22 15:02:37 IRDT 2019
-base.0=/Users/zeynabmir/Desktop/HappyLand/HappyLand/HappyLand/Temp/gradleOut/build/intermediates/transforms/dexMerger/release/0
-path.0=classes.dex
-renamed.0=classes.dex
