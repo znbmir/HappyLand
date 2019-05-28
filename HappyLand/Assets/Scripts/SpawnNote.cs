@@ -55,6 +55,7 @@ public class SpawnNote : MonoBehaviour {
 
 	}
 
+
 	// Update is called once per frame
 	void Update () {
   //  Random.Range ((int)(0.1 * seconds), (int)(0.2 * seconds));
@@ -84,7 +85,15 @@ public class SpawnNote : MonoBehaviour {
 				Vector3 myButtonVector = new Vector3 (myButtonXPosition, myButtonYPosition, 0);
 				Vector3 myButtonMoveDirection = (myButtonVector - spawnPoint.transform.position).normalized * moveSpeed;
 
-				GameObject myButton = Instantiate (noteTouchLeft, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
+
+				GameObject myButton = ObjectPooler.SharedInstance.GetPooledNote(ObjectPooler.SharedInstance.notesPooledLeft);
+				if (myButton != null) {
+					myButton.transform.position = spawnPoint.transform.position;
+					myButton.transform.rotation = spawnPoint.transform.rotation;
+					myButton.SetActive(true);
+				}
+
+				//GameObject myButton = Instantiate (noteTouchLeft, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
 				myButton.transform.SetParent(yourCanvasVariable.transform);
 				myButton.GetComponent<Rigidbody2D> ().velocity = new Vector2 (myButtonMoveDirection.x, myButtonMoveDirection.y);
 				myButton.transform.rotation = Quaternion.Euler(0,0,-1*angleLeft);
@@ -120,7 +129,14 @@ public class SpawnNote : MonoBehaviour {
 				Vector3 myButtonVector = new Vector3 (myButtonXPosition, myButtonYPosition, 0);
 				Vector3 myButtonMoveDirection = (myButtonVector - spawnPoint.transform.position).normalized * moveSpeed;
 
-				GameObject myButton = Instantiate (noteTouchRight, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
+				GameObject myButton = ObjectPooler.SharedInstance.GetPooledNote(ObjectPooler.SharedInstance.notesPooledRight);
+				if (myButton != null) {
+					myButton.transform.position = spawnPoint.transform.position;
+					myButton.transform.rotation = spawnPoint.transform.rotation;
+					myButton.SetActive(true);
+				}
+
+				//GameObject myButton = Instantiate (noteTouchRight, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
 				myButton.transform.SetParent(yourCanvasVariable.transform);
 				myButton.GetComponent<Rigidbody2D> ().velocity = new Vector2 (myButtonMoveDirection.x, myButtonMoveDirection.y);
 				myButton.transform.rotation = Quaternion.Euler(0,0,-1*angleRight);
