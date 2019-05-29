@@ -738,8 +738,8 @@ MonoBehaviour:
   currentMultiplier: 0
   multiplierTracker: 0
   multiplierThresholds: 
-  scoreText: {fileID: 0}
-  multiText: {fileID: 0}
+  scoreText: {fileID: 2094060887}
+  multiText: {fileID: 2094060887}
 --- !u!4 &521147320
 Transform:
   m_ObjectHideFlags: 0
