@@ -18,6 +18,6 @@ public class ScoreCounter : MonoBehaviour
     void Update()
     {
       scoreText.text = ":" + score;
-      Debug.Log(score);
+      //Debug.Log(score);
     }
 }

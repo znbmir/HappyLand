@@ -29,6 +29,10 @@ public class DestroyOnTouch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      //  if(input.touchCount >0){
+
+     //  }
+
     }
 
     void OnTriggerEnter2D(Collider2D target) {
@@ -38,7 +42,17 @@ public class DestroyOnTouch : MonoBehaviour
       }
     }
 
-    public void OnMouseDown()
+    public void OnMouseDown(){
+        Debug.Log("Something touched");
+        if(passTouchActivation)
+        {
+          passTouchActivation = false;
+          ScoreCounter.score++;
+          explode();
+        }
+    }
+
+    public void PointerDownOnNote()
     {
       Debug.Log("Something touched");
       if(passTouchActivation)

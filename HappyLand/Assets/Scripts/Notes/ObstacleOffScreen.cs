@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ObstacleOffScreen : MonoBehaviour {
 
-  void OnTriggerEnter2D(Collider2D target) {
+  void OnTriggerEnter(Collider target) {
 		if (target.tag == "Collector") {
 			gameObject.SetActive(false);
-      DestroyOnTouch.passTouchActivation = false;
+      TrigerTouchActivation.passTouchActivation = false;
 		}
 	}
 

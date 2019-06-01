@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         if(Input.anyKeyDown)
         {
           startPlaying = true;
-          theSpawnNote.hasStarted = true;
+          SpawnNote.hasStarted = true;
 
           theMusic.Play();
         }
