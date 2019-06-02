@@ -58,7 +58,6 @@
      <Compile Include="Assets\CompoundColliderGenerator\ProceduralToolkit\MeshE.cs" />
      <Compile Include="Assets\CompoundColliderGenerator\ProceduralToolkit\MeshPrimitives.cs" />
      <Compile Include="Assets\CompoundColliderGenerator\ProceduralToolkit\PTUtils.cs" />
-     <Compile Include="Assets\Scripts\CircleMove.cs" />
      <Compile Include="Assets\Scripts\Extra\DistanceDestroyOnTouch.cs" />
      <Compile Include="Assets\Scripts\Extra\SpawnCube.cs" />
      <Compile Include="Assets\Scripts\Extra\ToggleController.cs" />
