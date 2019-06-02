@@ -31,12 +31,12 @@ namespace Tools
                     {
                       if (_tileHit.collider.tag == "Player")
                       {
-                          if(TrigerTouchActivation.passTouchActivation)
+                        if(_tileHit.collider.gameObject.GetComponent< TrigerTouchActivation >().passTouchActivation)
                           {
                             Debug.Log("Player Detected");
                             _tileHit.collider.gameObject.SetActive(false);
-                            TrigerTouchActivation.passTouchActivation = false;
-                            ScoreCounter.score++;
+                            _tileHit.collider.gameObject.GetComponent< TrigerTouchActivation >().passTouchActivation =false;
+                            GameManager.score++;
                           }
                         }
                     }
@@ -56,12 +56,12 @@ namespace Tools
                         {
                             if (_tileHit.collider.tag == "Player")
                             {
-                                if(TrigerTouchActivation.passTouchActivation)
+                                if(_tileHit.collider.gameObject.GetComponent< TrigerTouchActivation >().passTouchActivation)
                                 {
                                   Debug.Log("Player Detected");
                                   _tileHit.collider.gameObject.SetActive(false);
-                                  TrigerTouchActivation.passTouchActivation = false;
-                                  ScoreCounter.score++;
+                                  _tileHit.collider.gameObject.GetComponent< TrigerTouchActivation >().passTouchActivation =false;
+                                  GameManager.score++;
                                 }
                               }
                         }

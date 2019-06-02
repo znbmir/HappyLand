@@ -19,6 +19,13 @@ public class GameManager : MonoBehaviour
 
   public Text scoreText;
   public Text multiText;
+  static public int score = 0;
+
+
+  private float RotateSpeed = 10f;
+  private float angle;
+  public GameObject circleInside;
+  public GameObject circleOutside;
 
     // Start is called before the first frame update
     void Start()
@@ -31,16 +38,30 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+      scoreText.text = "" + score;
+
       if(!startPlaying)
       {
         if(Input.anyKeyDown)
         {
           startPlaying = true;
-          SpawnNote.hasStarted = true;
+          theSpawnNote.hasStarted = true;
 
           theMusic.Play();
         }
       }
+
+      MoveCircle(circleInside, -1);
+      MoveCircle(circleOutside, 1);
+    }
+
+    void MoveCircle(GameObject _circle, int _direction)
+    {
+      //Move circle around
+      angle += RotateSpeed * Time.deltaTime;
+      transform.rotation = Quaternion.Euler(0,angle,0);
+      _circle.transform.rotation = Quaternion.Euler(0,0,-1* _direction* angle);
     }
 
 /*    public void NoteHit()

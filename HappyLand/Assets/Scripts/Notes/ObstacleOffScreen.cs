@@ -6,8 +6,8 @@ public class ObstacleOffScreen : MonoBehaviour {
 
   void OnTriggerEnter(Collider target) {
 		if (target.tag == "Collector") {
+      gameObject.GetComponent<Collider>().gameObject.GetComponent< TrigerTouchActivation >().passTouchActivation =false;
 			gameObject.SetActive(false);
-      TrigerTouchActivation.passTouchActivation = false;
 		}
 	}
 

@@ -47,7 +47,7 @@ public class DestroyOnTouch : MonoBehaviour
         if(passTouchActivation)
         {
           passTouchActivation = false;
-          ScoreCounter.score++;
+          GameManager.score++;
           explode();
         }
     }
@@ -58,7 +58,7 @@ public class DestroyOnTouch : MonoBehaviour
       if(passTouchActivation)
       {
         passTouchActivation = false;
-        ScoreCounter.score++;
+        GameManager.score++;
 
             explode();
 

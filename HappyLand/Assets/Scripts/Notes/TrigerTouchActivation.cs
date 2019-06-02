@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrigerTouchActivation : MonoBehaviour
 {
-  public static bool passTouchActivation = false;
+  public bool passTouchActivation = false;
     // Start is called before the first frame update
     void Start()
     {

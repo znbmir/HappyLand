@@ -106,8 +106,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.0000001, z: 1.3237681}
-  m_Center: {x: 0, y: 0, z: 0.17717446}
+  m_Size: {x: 1, y: 1.0000001, z: 1.260773}
+  m_Center: {x: 0, y: 0, z: 0.20866933}
 --- !u!54 &747419774581299915
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -136,3 +136,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd02405bfeeb74f52b92f27d9ad9c8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  passTouchActivation: 0
