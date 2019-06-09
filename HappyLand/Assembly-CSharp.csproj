@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\Notes\MultyTouch.cs" />
      <Compile Include="Assets\Scripts\Notes\ObjectPooler.cs" />
      <Compile Include="Assets\Scripts\Notes\ObstacleOffScreen.cs" />
+     <Compile Include="Assets\Scripts\Notes\ScaleAccrDistance.cs" />
      <Compile Include="Assets\Scripts\Notes\SpawnNote.cs" />
      <Compile Include="Assets\Scripts\Notes\TrigerTouchActivation.cs" />
      <None Include="Assets\Fonts\Atarian\Readme.txt" />

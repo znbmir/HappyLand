@@ -18,7 +18,7 @@ public class TrigerTouchActivation : MonoBehaviour
     }
     void OnTriggerEnter(Collider target) {
       if (target.tag == "TouchActivation") {
-        Debug.Log("touch activated");
+        //Debug.Log("touch activated");
         passTouchActivation = true;
       }
     }

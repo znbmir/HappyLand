@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7041674683971076152}
   - component: {fileID: 3676770803287269869}
   - component: {fileID: 1312983835741820677}
+  - component: {fileID: 2617723062743580114}
   m_Layer: 8
   m_Name: SquareL
   m_TagString: Player
@@ -101,10 +102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e22a9491be36e4bfc938c76809fe163a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthValue: 0
-  HealththBarObj: {fileID: 4734262680325055111, guid: 1d88502c48fb540d59cdc7bac673056b,
-    type: 3}
-  _bar: {fileID: 4734262680325055130, guid: 1d88502c48fb540d59cdc7bac673056b, type: 3}
 --- !u!54 &747419774581299915
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -156,3 +153,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5967306210780369103}
   m_CullTransparentMesh: 0
+--- !u!114 &2617723062743580114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5967306210780369103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8b369161cd34854b53f7c063568286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxdistance: 3
+  originPoint: {fileID: 1262493706, guid: e3879814019c745bd960fa4e6b9688dc, type: 3}
+  direction: Left

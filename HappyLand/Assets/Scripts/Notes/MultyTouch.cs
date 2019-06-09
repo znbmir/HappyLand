@@ -16,6 +16,9 @@ namespace Tools
       public float explosionForce = 50f;
       public float explosionRadius = 4f;
       public float explosionUpward = 0.4f;
+      public AudioSource theBeepMusic;
+      public SpawnNote theSpawnNote;
+
 
 
 
@@ -25,12 +28,14 @@ namespace Tools
             {
                 if (Input.GetMouseButtonDown(0))
                 {
+                  bool isTouchPlayer = false;
                     _tileDetectRay = Camera.main.ScreenPointToRay(Input.mousePosition);
                     Debug.DrawRay(_tileDetectRay.origin , _tileDetectRay.direction * 1000 , Color.green);
                     if (Physics.Raycast(_tileDetectRay, out _tileHit, 1000))
                     {
                       if (_tileHit.collider.tag == "Player")
                       {
+                        isTouchPlayer = true;
                         if(_tileHit.collider.gameObject.GetComponent< TrigerTouchActivation >().passTouchActivation)
                           {
                             Debug.Log("Player Detected");
@@ -41,6 +46,11 @@ namespace Tools
 
                           }
                         }
+
+                    }
+                    if(!isTouchPlayer && theSpawnNote.hasStarted == true){
+                      theBeepMusic.Play();
+                      Debug.Log("Player not Detected **************************");
                     }
                 }
             }
@@ -52,12 +62,14 @@ namespace Tools
                     var touch = Input.GetTouch(i);
                     if (Input.GetTouch(i).phase == TouchPhase.Began)
                     {
-                        _tileDetectRay = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
-                        Debug.DrawRay(_tileDetectRay.origin , _tileDetectRay.direction * 1000 , Color.green);
-                        if (Physics.Raycast(_tileDetectRay, out _tileHit, 1000))
+                      bool isTouchPlayer = false;
+                      _tileDetectRay = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
+                      Debug.DrawRay(_tileDetectRay.origin , _tileDetectRay.direction * 1000 , Color.green);
+                      if (Physics.Raycast(_tileDetectRay, out _tileHit, 1000))
                         {
                             if (_tileHit.collider.tag == "Player")
                             {
+                              isTouchPlayer = true;
                                 if(_tileHit.collider.gameObject.GetComponent< TrigerTouchActivation >().passTouchActivation)
                                 {
                                   Debug.Log("Player Detected");
@@ -67,6 +79,10 @@ namespace Tools
                                   //explode(_tileHit.collider.gameObject);
                                 }
                               }
+                        }
+                        if(!isTouchPlayer && theSpawnNote.hasStarted == true){
+                          theBeepMusic.Play();
+                          Debug.Log("Player not Detected **************************");
                         }
                     }
                 }

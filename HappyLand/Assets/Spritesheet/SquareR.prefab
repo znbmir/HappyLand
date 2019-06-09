@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 163814320573408329}
   - component: {fileID: 1429921482630213630}
   - component: {fileID: 7992897776024927208}
+  - component: {fileID: 8895198320033883299}
   m_Layer: 8
   m_Name: SquareR
   m_TagString: Player
@@ -100,7 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e22a9491be36e4bfc938c76809fe163a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bar: {fileID: 4734262680325055130, guid: 1d88502c48fb540d59cdc7bac673056b, type: 3}
 --- !u!54 &163814320573408329
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -144,3 +144,18 @@ CapsuleCollider:
   m_Height: 1.7293178
   m_Direction: 0
   m_Center: {x: -0.39231843, y: -0.27297616, z: 0}
+--- !u!114 &8895198320033883299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436420132985065960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8b369161cd34854b53f7c063568286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxdistance: 3
+  originPoint: {fileID: 1262493706, guid: e3879814019c745bd960fa4e6b9688dc, type: 3}
+  direction: Right

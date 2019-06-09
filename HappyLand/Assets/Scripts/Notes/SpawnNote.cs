@@ -29,10 +29,16 @@ public class SpawnNote : MonoBehaviour {
 	public NoteType[] noteTypeLeft;
 	public NoteType[] noteTypeRight;
 
+	public NoteColor[] noteColorLeft;
+	public NoteColor[] noteColorRight;
+
 	public int currentNoteIndex = 0;
 	public NoteType currentNoteLeft;
 	public NoteType currentNoteRight;
-
+	static public Color realcolorLeft;
+	static public Color realcolorRight;
+	public NoteColor currentNoteColorLeft;
+	public NoteColor currentNoteColorRight;
 
 	public enum NoteType
 	{
@@ -43,8 +49,16 @@ public class SpawnNote : MonoBehaviour {
 		TouchHold
 	};
 
+	public enum NoteColor
+	{
+		Red,
+		Green,
+		Blue
+	};
+
 	// Use this for initialization
 	void Start () {
+
 		radius = 5f;
 		//moveSpeed = 200f;
     startPoint = new Vector2(0, 2);
@@ -52,6 +66,7 @@ public class SpawnNote : MonoBehaviour {
     InvokeRepeating("SpawnNoteRight", 0, 1f);
 
 		moveSpeed = beatTempo / 60f;
+
 
 	}
 
@@ -66,12 +81,13 @@ public class SpawnNote : MonoBehaviour {
 		if(hasStarted){
 
     currentNoteLeft = noteTypeLeft[currentNoteIndex];
+		currentNoteColorLeft = noteColorLeft[currentNoteIndex];
     currentNoteIndex++;
 
 		switch (currentNoteLeft)
 		{
 			case NoteType.None:
-		  print ("None NoteType^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+		  //print ("None NoteType^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 			break;
 			case NoteType.Touch:
 			{
@@ -85,6 +101,10 @@ public class SpawnNote : MonoBehaviour {
 				if (myButton != null) {
 					myButton.transform.position = spawnPoint.transform.position;
 					myButton.transform.rotation = spawnPoint.transform.rotation;
+					//keep color to use in ScaleAcrDistance
+					realcolorLeft = myButton.GetComponent<SpriteRenderer> ().color;
+					//fade color for first frame
+					myButton.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, .01f);
 					myButton.SetActive(true);
 				}
 
@@ -95,7 +115,7 @@ public class SpawnNote : MonoBehaviour {
 			}
 			break;
 			default:
-			print ("Incorrect NoteType^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+			//print ("Incorrect NoteType^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 			break;
 		}
 	}
@@ -115,7 +135,7 @@ public class SpawnNote : MonoBehaviour {
 		switch (currentNoteRight)
 		{
 			case NoteType.None:
-			print ("None NoteType^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+			//print ("None NoteType^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 			break;
 			case NoteType.Touch:
 			{
@@ -128,6 +148,11 @@ public class SpawnNote : MonoBehaviour {
 				if (myButton != null) {
 					myButton.transform.position = spawnPoint.transform.position;
 					myButton.transform.rotation = spawnPoint.transform.rotation;
+
+					//keep color to use in ScaleAcrDistance
+					realcolorRight = myButton.GetComponent<SpriteRenderer> ().color;
+					//fade color for first frame
+					myButton.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, .01f);
 					myButton.SetActive(true);
 				}
 
@@ -138,10 +163,12 @@ public class SpawnNote : MonoBehaviour {
 			}
 			break;
 			default:
-			print ("Incorrect NoteType^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+			//print ("Incorrect NoteType^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 			break;
 		}
 	}
 }
+
+//Color SetColor()
 
 }
