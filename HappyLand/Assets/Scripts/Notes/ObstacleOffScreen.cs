@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class ObstacleOffScreen : MonoBehaviour {
 
@@ -8,6 +10,9 @@ public class ObstacleOffScreen : MonoBehaviour {
 		if (target.tag == "Collector") {
       gameObject.GetComponent<Collider>().gameObject.GetComponent< TrigerTouchActivation >().passTouchActivation =false;
 			gameObject.SetActive(false);
+
+      GameManager._healthValue = GameManager._healthValue - 2f;
+      GameManager.Instance.HealthChange(GameManager._healthValue);
 		}
 	}
 
@@ -20,4 +25,5 @@ public class ObstacleOffScreen : MonoBehaviour {
 	void Update () {
 
 	}
+
 }

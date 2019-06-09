@@ -37,6 +37,8 @@ namespace Tools
                             _tileHit.collider.gameObject.SetActive(false);
                             _tileHit.collider.gameObject.GetComponent< TrigerTouchActivation >().passTouchActivation =false;
                             GameManager.score++;
+                            //explode(_tileHit.collider.gameObject);
+
                           }
                         }
                     }
@@ -62,6 +64,7 @@ namespace Tools
                                   _tileHit.collider.gameObject.SetActive(false);
                                   _tileHit.collider.gameObject.GetComponent< TrigerTouchActivation >().passTouchActivation =false;
                                   GameManager.score++;
+                                  //explode(_tileHit.collider.gameObject);
                                 }
                               }
                         }

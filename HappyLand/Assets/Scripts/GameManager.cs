@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
   public bool startPlaying;
   public SpawnNote theSpawnNote;
 
-  public static GameManager instance;
   public int currentScore;
   public int scorePerNote = 100;
 
@@ -27,10 +26,26 @@ public class GameManager : MonoBehaviour
   public GameObject circleInside;
   public GameObject circleOutside;
 
+  static public float _healthValue = 100f;
+  public Image _bar;
+
+  private static GameManager _instance = null;
+  public static GameManager Instance{
+    get{if(_instance == null){
+      _instance = new GameManager();
+      }
+      return _instance;
+    }
+  }
+
+  private GameManager(){
+    _instance = this;
+  }
+
+
     // Start is called before the first frame update
     void Start()
     {
-      instance = this;
       scoreText.text = "Score: 0";
       currentMultiplier = 1;
     }
@@ -62,6 +77,11 @@ public class GameManager : MonoBehaviour
       angle += RotateSpeed * Time.deltaTime;
       transform.rotation = Quaternion.Euler(0,angle,0);
       _circle.transform.rotation = Quaternion.Euler(0,0,-1* _direction* angle);
+    }
+
+    public void HealthChange(float healthValue){
+      float amount = (healthValue/100.0f);
+      _bar.fillAmount = amount;
     }
 
 /*    public void NoteHit()
