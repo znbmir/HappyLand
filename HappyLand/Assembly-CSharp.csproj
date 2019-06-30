@@ -58,10 +58,24 @@
      <Compile Include="Assets\CompoundColliderGenerator\ProceduralToolkit\MeshE.cs" />
      <Compile Include="Assets\CompoundColliderGenerator\ProceduralToolkit\MeshPrimitives.cs" />
      <Compile Include="Assets\CompoundColliderGenerator\ProceduralToolkit\PTUtils.cs" />
+     <Compile Include="Assets\FingersLite\Demo\DemoAsteroidScript.cs" />
+     <Compile Include="Assets\FingersLite\Demo\DemoScript.cs" />
+     <Compile Include="Assets\FingersLite\Script\FingersScript.cs" />
+     <Compile Include="Assets\FingersLite\Script\Gestures\DeviceInfo.cs" />
+     <Compile Include="Assets\FingersLite\Script\Gestures\GestureRecognizer.cs" />
+     <Compile Include="Assets\FingersLite\Script\Gestures\LongPressGestureRecognizer.cs" />
+     <Compile Include="Assets\FingersLite\Script\Gestures\OneTouchRotateGestureRecognizer.cs" />
+     <Compile Include="Assets\FingersLite\Script\Gestures\OneTouchScaleGestureRecognizer.cs" />
+     <Compile Include="Assets\FingersLite\Script\Gestures\PanGestureRecognizer.cs" />
+     <Compile Include="Assets\FingersLite\Script\Gestures\RotateGestureRecognizer.cs" />
+     <Compile Include="Assets\FingersLite\Script\Gestures\ScaleGestureRecognizer.cs" />
+     <Compile Include="Assets\FingersLite\Script\Gestures\SwipeGestureRecognizer.cs" />
+     <Compile Include="Assets\FingersLite\Script\Gestures\TapGestureRecognizer.cs" />
      <Compile Include="Assets\Scripts\Extra\DistanceDestroyOnTouch.cs" />
      <Compile Include="Assets\Scripts\Extra\SpawnCube.cs" />
      <Compile Include="Assets\Scripts\Extra\ToggleController.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Notes\CircleFixation.cs" />
      <Compile Include="Assets\Scripts\Notes\Colors.cs" />
      <Compile Include="Assets\Scripts\Notes\DestroyOnTouch.cs" />
      <Compile Include="Assets\Scripts\Notes\MultyTouch.cs" />
@@ -71,7 +85,9 @@
      <Compile Include="Assets\Scripts\Notes\SpawnNote.cs" />
      <Compile Include="Assets\Scripts\Notes\TrigerTouchActivation.cs" />
      <None Include="Assets\Fonts\Atarian\Readme.txt" />
+     <None Include="Assets\FingersLite\ChangeLog.txt" />
      <None Include="Assets\CompoundColliderGenerator\README.txt" />
+     <None Include="Assets\FingersLite\Readme.txt" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>/Users/zeynabmir/Desktop/HappyLand/HappyLand/HappyLand/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>

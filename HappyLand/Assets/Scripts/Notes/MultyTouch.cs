@@ -41,7 +41,9 @@ namespace Tools
                             Debug.Log("Player Detected");
                             _tileHit.collider.gameObject.SetActive(false);
                             _tileHit.collider.gameObject.GetComponent< TrigerTouchActivation >().passTouchActivation =false;
-                            GameManager.score++;
+                            //GameManager.score++;
+                            GameManager.Instance.NoteHit();
+
                             //explode(_tileHit.collider.gameObject);
 
                           }
@@ -75,8 +77,8 @@ namespace Tools
                                   Debug.Log("Player Detected");
                                   _tileHit.collider.gameObject.SetActive(false);
                                   _tileHit.collider.gameObject.GetComponent< TrigerTouchActivation >().passTouchActivation =false;
-                                  GameManager.score++;
-                                  //explode(_tileHit.collider.gameObject);
+                                  //GameManager.score++;
+                                  GameManager.Instance.NoteHit();
                                 }
                               }
                         }

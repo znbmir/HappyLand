@@ -55,6 +55,7 @@
   <ItemGroup>
      <Compile Include="Assets\CompoundColliderGenerator\Editor\CCGEditorWindow.cs" />
      <Compile Include="Assets\CompoundColliderGenerator\Editor\CompoundCollider.cs" />
+     <Compile Include="Assets\FingersLite\Editor\FingersScriptEditor.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>/Users/zeynabmir/Desktop/HappyLand/HappyLand/HappyLand/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>

@@ -23,8 +23,8 @@ public class SpawnNote : MonoBehaviour {
 
 	public bool hasStarted;
 
-  float angleLeft = 210f;
-  float angleRight = 150f;
+  //float angleLeft = 210f;
+  //float angleRight = 150f;
 
 	public NoteType[] noteTypeLeft;
 	public NoteType[] noteTypeRight;
@@ -39,6 +39,9 @@ public class SpawnNote : MonoBehaviour {
 	static public Color realcolorRight;
 	public NoteColor currentNoteColorLeft;
 	public NoteColor currentNoteColorRight;
+
+	public float[] angleLeft;
+	public float[] angleRight;
 
 	public enum NoteType
 	{
@@ -91,8 +94,8 @@ public class SpawnNote : MonoBehaviour {
 			break;
 			case NoteType.Touch:
 			{
-				float myButtonXPosition = spawnPoint.transform.position.x + Mathf.Sin ((angleLeft * Mathf.PI) / 180) * radius;
-				float myButtonYPosition = spawnPoint.transform.position.y + Mathf.Cos ((angleLeft * Mathf.PI) / 180) * radius;
+				float myButtonXPosition = spawnPoint.transform.position.x + Mathf.Sin ((angleLeft[currentNoteIndex] * Mathf.PI) / 180) * radius;
+				float myButtonYPosition = spawnPoint.transform.position.y + Mathf.Cos ((angleLeft[currentNoteIndex] * Mathf.PI) / 180) * radius;
 				Vector3 myButtonVector = new Vector3 (myButtonXPosition, myButtonYPosition, 0);
 				Vector3 myButtonMoveDirection = (myButtonVector - spawnPoint.transform.position).normalized * moveSpeed;
 
@@ -111,7 +114,7 @@ public class SpawnNote : MonoBehaviour {
 				//GameObject myButton = Instantiate (noteTouchLeft, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
 				myButton.transform.SetParent(yourCanvasVariable.transform);
 				myButton.GetComponent<Rigidbody> ().velocity = new Vector2 (myButtonMoveDirection.x, myButtonMoveDirection.y);
-				myButton.transform.rotation = Quaternion.Euler(0,0,-1*angleLeft);
+				myButton.transform.rotation = Quaternion.Euler(0,0,-1*angleLeft[currentNoteIndex]);
 			}
 			break;
 			default:
@@ -139,8 +142,8 @@ public class SpawnNote : MonoBehaviour {
 			break;
 			case NoteType.Touch:
 			{
-				float myButtonXPosition = spawnPoint.transform.position.x + Mathf.Sin ((angleRight * Mathf.PI) / 180) * radius;
-				float myButtonYPosition = spawnPoint.transform.position.y + Mathf.Cos ((angleRight * Mathf.PI) / 180) * radius;
+				float myButtonXPosition = spawnPoint.transform.position.x + Mathf.Sin ((angleRight[currentNoteIndex] * Mathf.PI) / 180) * radius;
+				float myButtonYPosition = spawnPoint.transform.position.y + Mathf.Cos ((angleRight[currentNoteIndex] * Mathf.PI) / 180) * radius;
 				Vector3 myButtonVector = new Vector3 (myButtonXPosition, myButtonYPosition, 0);
 				Vector3 myButtonMoveDirection = (myButtonVector - spawnPoint.transform.position).normalized * moveSpeed;
 
@@ -159,7 +162,8 @@ public class SpawnNote : MonoBehaviour {
 				//GameObject myButton = Instantiate (noteTouchRight, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
 				myButton.transform.SetParent(yourCanvasVariable.transform);
 				myButton.GetComponent<Rigidbody> ().velocity = new Vector2 (myButtonMoveDirection.x, myButtonMoveDirection.y);
-				myButton.transform.rotation = Quaternion.Euler(0,0,-1*angleRight);
+				myButton.transform.rotation = Quaternion.Euler(0,0,-1*angleRight[currentNoteIndex]);
+
 			}
 			break;
 			default:

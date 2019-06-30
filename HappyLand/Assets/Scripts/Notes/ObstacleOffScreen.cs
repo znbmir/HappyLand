@@ -13,6 +13,7 @@ public class ObstacleOffScreen : MonoBehaviour {
 
       GameManager._healthValue = GameManager._healthValue - 2f;
       GameManager.Instance.HealthChange(GameManager._healthValue);
+      GameManager.Instance.NoteMissed();
 		}
 	}
 

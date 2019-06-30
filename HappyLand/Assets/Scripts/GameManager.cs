@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+
+  //GameOver
+  public RectTransform panelGameOver;
+  public Text TxtGameOver;
+  private bool gameOver = false;
+
   public AudioSource theMusic;
   public bool startPlaying;
   public SpawnNote theSpawnNote;
@@ -42,7 +48,11 @@ public class GameManager : MonoBehaviour
     _instance = this;
   }
 
-
+private void OnGameOver()
+{
+  panelGameOver.gameObject.SetActive(true);
+  TxtGameOver.text = GameManager.Instance.gameOver ? "You Loose" : "You Won";
+}
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +64,13 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-      scoreText.text = "" + score;
+      scoreText.text = "" + currentScore;
+      multiText.text = "" + currentMultiplier;
+      if( _healthValue == 0)
+      {
+        gameOver = true;
+        OnGameOver();
+      }
 
       if(!startPlaying)
       {
@@ -84,7 +100,7 @@ public class GameManager : MonoBehaviour
       _bar.fillAmount = amount;
     }
 
-/*    public void NoteHit()
+    public void NoteHit()
     {
       Debug.Log("Hit On Time");
 
@@ -101,12 +117,14 @@ public class GameManager : MonoBehaviour
       multiText.text = "Multiplier: x" + currentMultiplier;
 
       currentScore += scorePerNote * currentMultiplier;
-      scoreText.text = "Score " + currentScore;
+      scoreText.text = "" + currentScore;
     }
 
     public void NoteMissed()
     {
-      Debug.Log("Missed Note");
+
+      if(currentMultiplier > 1)
+      currentMultiplier--;
     }
-    */
+
 }

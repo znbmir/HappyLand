@@ -42,15 +42,16 @@ public class DestroyOnTouch : MonoBehaviour
       }
     }
 
-    public void OnMouseDown(){
+/*    public void OnMouseDown(){
         Debug.Log("Something touched");
         if(passTouchActivation)
         {
           passTouchActivation = false;
-          GameManager.score++;
+          //GameManager.score++;
+          //GameManager.Instance.NoteHit();
           explode();
         }
-    }
+    }*/
 
     public void PointerDownOnNote()
     {
@@ -58,16 +59,17 @@ public class DestroyOnTouch : MonoBehaviour
       if(passTouchActivation)
       {
         passTouchActivation = false;
-        GameManager.score++;
+        //GameManager.score++;
+        //GameManager.Instance.NoteHit();
 
-            explode();
+            //explode();
 
       }
 
     }
 
 
-    public void explode()
+  /*  public void explode()
     {
         //make object disappear
         gameObject.SetActive(false);
@@ -116,6 +118,6 @@ public class DestroyOnTouch : MonoBehaviour
         //add rigidbody and set mass
         piece.AddComponent<Rigidbody>();
         piece.GetComponent<Rigidbody>().mass = cubeSize;
-    }
+    }*/
 
 }
