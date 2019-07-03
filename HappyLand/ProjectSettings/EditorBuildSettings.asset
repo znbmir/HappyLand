@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Scenes/SampleScene.unity
-    guid: f8e89cdb76e4c440193b210db6dac0a2
+    path: Assets/FingersLite/Demo/DemoScene.unity
+    guid: 738ae5183532d44c981cd71f96681663
   m_configObjects: {}

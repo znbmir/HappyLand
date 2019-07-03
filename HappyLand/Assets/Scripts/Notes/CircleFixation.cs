@@ -22,7 +22,7 @@ public class CircleFixation : MonoBehaviour {
 
 	void Update ()
     {
-			if(transform.localScale.y < maxScale && !isTouched)
+			if(transform.localScale.y < maxScale && GameManager.startPlaying)
 			{
 				transform.localScale = new Vector3(transform.localScale.x + scale, transform.localScale.y + scale, transform.localScale.z);
 			}
@@ -34,13 +34,6 @@ public class CircleFixation : MonoBehaviour {
 					{
 						_tileDetectRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 						Debug.DrawRay(_tileDetectRay.origin , _tileDetectRay.direction * 1000 , Color.green);
-						if (Physics.Raycast(_tileDetectRay, out _tileHit, 1000))
-						{
-							if (_tileHit.collider.tag == "Circle")
-							{
-								isTouched = true;
-							}
-						}
 					}
 				}
 

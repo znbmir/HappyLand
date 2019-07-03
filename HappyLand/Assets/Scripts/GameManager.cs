@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
   private bool gameOver = false;
 
   public AudioSource theMusic;
-  public bool startPlaying;
+  static public bool startPlaying;
   public SpawnNote theSpawnNote;
 
   public int currentScore;
