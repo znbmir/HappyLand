@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class SpawnNote : MonoBehaviour {
 
-	[SerializeField]
-	GameObject noteTouchLeft;
-  [SerializeField]
-  GameObject noteTouchRight;
+
 
   [SerializeField]
   GameObject spawnPoint;
@@ -37,8 +34,8 @@ public class SpawnNote : MonoBehaviour {
 	public NoteType currentNoteRight;
 	static public Color realcolorLeft;
 	static public Color realcolorRight;
-	public NoteColor currentNoteColorLeft;
-	public NoteColor currentNoteColorRight;
+	static public NoteColor currentNoteColorLeft;
+	static public NoteColor currentNoteColorRight;
 
 	public float[] angleLeft;
 	public float[] angleRight;
@@ -49,7 +46,7 @@ public class SpawnNote : MonoBehaviour {
 		Touch,
 		DropDown,
 		DropUp,
-		TouchHold
+		LongHold
 	};
 
 	public enum NoteColor
@@ -84,7 +81,10 @@ public class SpawnNote : MonoBehaviour {
 		if(hasStarted){
 
     currentNoteLeft = noteTypeLeft[currentNoteIndex];
+		currentNoteRight = noteTypeRight[currentNoteIndex];
 		currentNoteColorLeft = noteColorLeft[currentNoteIndex];
+    currentNoteColorRight = noteColorRight[currentNoteIndex];
+
     currentNoteIndex++;
 
 		switch (currentNoteLeft)
@@ -117,6 +117,34 @@ public class SpawnNote : MonoBehaviour {
 				myButton.transform.rotation = Quaternion.Euler(0,0,-1*angleLeft[currentNoteIndex]);
 			}
 			break;
+
+
+			//LongHold Not Spawning
+			case NoteType.LongHold:
+			{
+				float myButtonXPosition = spawnPoint.transform.position.x + Mathf.Sin ((angleLeft[currentNoteIndex] * Mathf.PI) / 180) * radius;
+				float myButtonYPosition = spawnPoint.transform.position.y + Mathf.Cos ((angleLeft[currentNoteIndex] * Mathf.PI) / 180) * radius;
+				Vector3 myButtonVector = new Vector3 (myButtonXPosition, myButtonYPosition, 0);
+				Vector3 myButtonMoveDirection = (myButtonVector - spawnPoint.transform.position).normalized * moveSpeed;
+
+
+				GameObject myButton = LongHoldPooler.SharedInstance.GetPooledLHNote(LongHoldPooler.SharedInstance.LHPooledLeft);
+				if (myButton != null) {
+					myButton.transform.position = spawnPoint.transform.position;
+					myButton.transform.rotation = spawnPoint.transform.rotation;
+					//keep color to use in ScaleAcrDistance
+					realcolorLeft = myButton.GetComponent<SpriteRenderer> ().color;
+					//fade color for first frame
+					myButton.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, .01f);
+					myButton.SetActive(true);
+				}
+
+				//GameObject myButton = Instantiate (noteTouchLeft, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
+				myButton.transform.SetParent(yourCanvasVariable.transform);
+				myButton.GetComponent<Rigidbody> ().velocity = new Vector2 (myButtonMoveDirection.x, myButtonMoveDirection.y);
+				myButton.transform.rotation = Quaternion.Euler(0,0,-1*angleLeft[currentNoteIndex]);
+			}
+			break;
 			default:
 			//print ("Incorrect NoteType^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 			break;
@@ -132,8 +160,6 @@ public class SpawnNote : MonoBehaviour {
   void SpawnNoteRight()
   {
 		if(hasStarted){
-
-    currentNoteRight = noteTypeRight[currentNoteIndex];
 
 		switch (currentNoteRight)
 		{
@@ -166,6 +192,34 @@ public class SpawnNote : MonoBehaviour {
 
 			}
 			break;
+
+			//LongHold Not Spawning
+			case NoteType.LongHold:
+			{
+				float myButtonXPosition = spawnPoint.transform.position.x + Mathf.Sin ((angleRight[currentNoteIndex] * Mathf.PI) / 180) * radius;
+				float myButtonYPosition = spawnPoint.transform.position.y + Mathf.Cos ((angleRight[currentNoteIndex] * Mathf.PI) / 180) * radius;
+				Vector3 myButtonVector = new Vector3 (myButtonXPosition, myButtonYPosition, 0);
+				Vector3 myButtonMoveDirection = (myButtonVector - spawnPoint.transform.position).normalized * moveSpeed;
+
+				GameObject myButton = LongHoldPooler.SharedInstance.GetPooledLHNote(LongHoldPooler.SharedInstance.LHPooledRight);
+				if (myButton != null) {
+					myButton.transform.position = spawnPoint.transform.position;
+					myButton.transform.rotation = spawnPoint.transform.rotation;
+
+					//keep color to use in ScaleAcrDistance
+					realcolorRight = myButton.GetComponent<SpriteRenderer> ().color;
+					//fade color for first frame
+					myButton.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, .01f);
+					myButton.SetActive(true);
+				}
+
+				//GameObject myButton = Instantiate (noteTouchRight, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
+				myButton.transform.SetParent(yourCanvasVariable.transform);
+				myButton.GetComponent<Rigidbody> ().velocity = new Vector2 (myButtonMoveDirection.x, myButtonMoveDirection.y);
+				myButton.transform.rotation = Quaternion.Euler(0,0,-1*angleRight[currentNoteIndex]);
+			}
+			break;
+
 			default:
 			//print ("Incorrect NoteType^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 			break;

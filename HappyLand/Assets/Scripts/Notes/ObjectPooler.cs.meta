@@ -3,7 +3,11 @@ guid: 1e7d6bdbfee9e4ca39ef8e2599cb5372
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - noteToPoolLeft: {fileID: 5967306210780369103, guid: 30a5ea284b9634f3cb84109cd9a2601c,
+      type: 3}
+  - noteToPoolRight: {fileID: 5967306210780369103, guid: 30a5ea284b9634f3cb84109cd9a2601c,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

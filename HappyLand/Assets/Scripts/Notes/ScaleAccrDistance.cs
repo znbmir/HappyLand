@@ -18,9 +18,42 @@ public class ScaleAccrDistance : MonoBehaviour {
 
       //Appear Color for Left and Right Notes
       if(direction == "Left")
-      GetComponent<SpriteRenderer>().color = SpawnNote.realcolorLeft;
+			{
+				switch (SpawnNote.currentNoteColorLeft)
+				{
+					case SpawnNote.NoteColor.Red:
+					GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
+					break;
+					case SpawnNote.NoteColor.Green:
+					GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
+					break;
+					case SpawnNote.NoteColor.Blue:
+					GetComponent<SpriteRenderer>().color = new Color(0, 0, 1, 1);
+					break;
+					default:
+					break;
+				}
+				//GetComponent<SpriteRenderer>().color = SpawnNote.realcolorLeft;
+			}
+
       else
-      GetComponent<SpriteRenderer>().color = SpawnNote.realcolorRight;
+			{
+				switch (SpawnNote.currentNoteColorRight)
+				{
+					case SpawnNote.NoteColor.Red:
+					GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
+					break;
+					case SpawnNote.NoteColor.Green:
+					GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
+					break;
+					case SpawnNote.NoteColor.Blue:
+					GetComponent<SpriteRenderer>().color = new Color(0, 0, 1, 1);
+					break;
+					default:
+					break;
+				}
+				//GetComponent<SpriteRenderer>().color = SpawnNote.realcolorRight;
+			}
 
       //Scale Note according to distance from SpawnPoint
       Vector3 pp = originPoint.transform.position;

@@ -1,5 +1,8 @@
 ﻿using System.Runtime.InteropServices.ComTypes;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Tools
 {
@@ -19,6 +22,12 @@ namespace Tools
       public AudioSource theBeepMusic;
       public SpawnNote theSpawnNote;
 
+      float _timePressed = 0;
+      float _timeLastPress = 0;
+      public float WaitingSeconds = 1;
+
+      public float waitTime;
+
 
 
 
@@ -28,32 +37,33 @@ namespace Tools
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                  bool isTouchPlayer = false;
+                  TouchPlayer.isTouchPlayer = false;
+                  TouchPlayerLH.isTouchPlayerLH = false;
+
                     _tileDetectRay = Camera.main.ScreenPointToRay(Input.mousePosition);
                     Debug.DrawRay(_tileDetectRay.origin , _tileDetectRay.direction * 1000 , Color.green);
                     if (Physics.Raycast(_tileDetectRay, out _tileHit, 1000))
                     {
                       if (_tileHit.collider.tag == "Player")
                       {
-                        isTouchPlayer = true;
-                        if(_tileHit.collider.gameObject.GetComponent< TrigerTouchActivation >().passTouchActivation)
-                          {
-                            Debug.Log("Player Detected");
-                            _tileHit.collider.gameObject.SetActive(false);
-                            _tileHit.collider.gameObject.GetComponent< TrigerTouchActivation >().passTouchActivation =false;
-                            //GameManager.score++;
-                            GameManager.Instance.NoteHit();
+                        TouchPlayer.isTouchPlayer = true;
+                      }
 
-                            //explode(_tileHit.collider.gameObject);
-
-                          }
-                        }
+                        else if (_tileHit.collider.tag == "PlayerLH"){
+                          TouchPlayerLH.isTouchPlayerLH = true;
+                      }
 
                     }
-                    if(!isTouchPlayer && theSpawnNote.hasStarted == true){
+                    if(!TouchPlayer.isTouchPlayer && !TouchPlayerLH.isTouchPlayerLH && theSpawnNote.hasStarted == true){
                       theBeepMusic.Play();
                       Debug.Log("Player not Detected **************************");
                     }
+                }
+
+                if(Input.GetMouseButtonUp(0))
+                {
+                  TouchPlayer.isTouchPlayer = false;
+                  TouchPlayerLH.isTouchPlayerLH = false;
                 }
             }
 
@@ -64,32 +74,59 @@ namespace Tools
                     var touch = Input.GetTouch(i);
                     if (Input.GetTouch(i).phase == TouchPhase.Began)
                     {
-                      bool isTouchPlayer = false;
+                      _timePressed = Time.time - _timeLastPress;
+                      TouchPlayer.isTouchPlayer = false;
+                      TouchPlayerLH.isTouchPlayerLH = false;
+
                       _tileDetectRay = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
                       Debug.DrawRay(_tileDetectRay.origin , _tileDetectRay.direction * 1000 , Color.green);
                       if (Physics.Raycast(_tileDetectRay, out _tileHit, 1000))
                         {
-                            if (_tileHit.collider.tag == "Player")
-                            {
-                              isTouchPlayer = true;
-                                if(_tileHit.collider.gameObject.GetComponent< TrigerTouchActivation >().passTouchActivation)
-                                {
-                                  Debug.Log("Player Detected");
-                                  _tileHit.collider.gameObject.SetActive(false);
-                                  _tileHit.collider.gameObject.GetComponent< TrigerTouchActivation >().passTouchActivation =false;
-                                  //GameManager.score++;
-                                  GameManager.Instance.NoteHit();
-                                }
+                          if (_tileHit.collider.tag == "Player")
+                          {
+                            TouchPlayer.isTouchPlayer = true;
+                          }
+
+                              else if (_tileHit.collider.tag == "PlayerLH")
+                              {
+                                TouchPlayerLH.isTouchPlayerLH = true;
                               }
+
                         }
-                        if(!isTouchPlayer && theSpawnNote.hasStarted == true){
+                        if(!TouchPlayer.isTouchPlayer && !TouchPlayerLH.isTouchPlayerLH && theSpawnNote.hasStarted == true){
                           theBeepMusic.Play();
                           Debug.Log("Player not Detected **************************");
                         }
                     }
+
+                    if (Input.touches[0].phase == TouchPhase.Ended)
+                    {
+                      TouchPlayer.isTouchPlayer = false;
+                      TouchPlayerLH.isTouchPlayerLH = false;
+                    }
+
                 }
             }
         }
+
+
+
+  /*      bool CheckForLongPress()
+        {
+          if (Input.touches[0].phase == TouchPhase.Began) { // If the user puts her finger on screen...
+            _timePressed = Time.time - _timeLastPress;
+          }
+
+          if (Input.touches[0].phase == TouchPhase.Ended) { // If the user raises her finger from screen
+            _timeLastPress = Time.time;
+            if (_timePressed > WaitingSeconds/2f) { // Is the time pressed greater than our time delay threshold?
+              return true;
+            }
+          }
+          return false;
+        }*/
+
+
 
         public void explode(GameObject gameObjectHit)
         {
