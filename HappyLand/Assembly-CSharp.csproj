@@ -100,10 +100,11 @@
      <Compile Include="Assets\Scripts\Extra\DistanceDestroyOnTouch.cs" />
      <Compile Include="Assets\Scripts\Extra\SpawnCube.cs" />
      <Compile Include="Assets\Scripts\Extra\ToggleController.cs" />
-     <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\LongHoldNotes\LongHoldPooler.cs" />
      <Compile Include="Assets\Scripts\LongHoldNotes\ObstacleLHOffScreen.cs" />
      <Compile Include="Assets\Scripts\LongHoldNotes\TouchPlayerLH.cs" />
+     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\LevelSelector.cs" />
      <Compile Include="Assets\Scripts\Notes\CircleFixation.cs" />
      <Compile Include="Assets\Scripts\Notes\Colors.cs" />
      <Compile Include="Assets\Scripts\Notes\DestroyOnTouch.cs" />
@@ -114,6 +115,9 @@
      <Compile Include="Assets\Scripts\Notes\SpawnNote.cs" />
      <Compile Include="Assets\Scripts\Notes\TouchPlayer.cs" />
      <Compile Include="Assets\Scripts\Notes\TrigerTouchActivation.cs" />
+     <Compile Include="Assets\Scripts\SaveLevel\Player.cs" />
+     <Compile Include="Assets\Scripts\SaveLevel\PlayerData.cs" />
+     <Compile Include="Assets\Scripts\SaveLevel\SaveSystem.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\Fonts\Atarian\Readme.txt" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
