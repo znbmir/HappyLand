@@ -1,46 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Player : MonoBehaviour
 {
   public int level;
-  public int health;
-
-  public  void SavePlayer ()
+  public int highScore;
+  public  void SavePlayer (string levelPath)
   {
-    SaveSystem.SavePlayer(this);
+    SaveSystem.SavePlayer(this, levelPath);
   }
 
-  public void LoadPlayer ()
+  public void LoadPlayer (string levelPath)
   {
-    PlayerData data = SaveSystem.LoadPlayer();
+    PlayerData data = SaveSystem.LoadPlayer(levelPath);
 
     level = data.level;
-    health = data.health;
+
+    highScore = data.highScore;
+
 
     Vector3 position;
     position.x = data.position[0];
     position.y = data.position[1];
     position.z = data.position[2];
     transform.position = position;
-
-
-
-
   }
 
   #region UI Methods
 
-  public void ChangeLevel (int amount)
+/*
+  public void ChangeHighScore (int amount)
   {
-    level += amount;
-  }
-
-  public void ChangeHealth (int amount)
-  {
-    health += amount;
-  }
+    highScore += amount;
+  }*/
 
   #endregion
 }

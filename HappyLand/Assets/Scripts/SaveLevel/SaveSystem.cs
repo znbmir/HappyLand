@@ -6,10 +6,10 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-  public static void SavePlayer(Player player)
+  public static void SavePlayer(Player player, string levelPath)
   {
     BinaryFormatter formatter = new BinaryFormatter();
-    string path = Application.persistentDataPath + "/player.fun";
+    string path = Application.persistentDataPath + levelPath;
     FileStream stream = new FileStream(path, FileMode.Create);
 
     PlayerData data = new PlayerData(player);
@@ -18,9 +18,9 @@ public static class SaveSystem
     stream.Close();
   }
 
-  public static PlayerData LoadPlayer ()
+  public static PlayerData LoadPlayer (string levelPath)
   {
-    string path = Application.persistentDataPath + "/player.fun";
+    string path = Application.persistentDataPath + levelPath;
     if(File.Exists(path))
     {
       BinaryFormatter  formatter = new BinaryFormatter();

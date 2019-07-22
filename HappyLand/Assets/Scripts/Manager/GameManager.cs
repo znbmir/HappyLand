@@ -2,9 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
+
+  static public int level;
+  public Text TxtLevel;
+
+  static public int highScore;
+  public Text TxtHighScore;
+
 
   //GameOver
   public RectTransform panelGameOver;
@@ -22,6 +31,7 @@ public class GameManager : MonoBehaviour
   public int multiplierTracker;
   public int[] multiplierThresholds;
 
+  public Text scoreTextGOP;
   public Text scoreText;
   public Text multiText;
   static public int score = 0;
@@ -52,12 +62,17 @@ private void OnGameOver()
 {
   panelGameOver.gameObject.SetActive(true);
   TxtGameOver.text = GameManager.Instance.gameOver ? "You Loose" : "You Won";
+  scoreTextGOP.text = scoreText.text;
+
+
 }
     // Start is called before the first frame update
     void Start()
     {
       scoreText.text = "Score: 0";
       currentMultiplier = 1;
+
+      TxtLevel.text = "" + level;
     }
 
     // Update is called once per frame
@@ -125,6 +140,11 @@ private void OnGameOver()
 
       if(currentMultiplier > 1)
       currentMultiplier--;
+    }
+
+    public void LevelSelectScene (string levelSelectScene)
+    {
+      SceneManager.LoadScene("LevelSelect");
     }
 
 }

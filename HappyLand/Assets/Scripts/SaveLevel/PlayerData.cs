@@ -6,14 +6,16 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
+  public int highScore;
   public int level;
-  public int health;
   public float[] position;
 
   public PlayerData(Player player)
   {
     level = player.level;
-    health = player.health;
+    // 4 is number of levels
+    highScore = player.highScore;
+
 
     position = new float[3];
     position[0] = player.transform.position.x;
